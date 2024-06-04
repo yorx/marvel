@@ -13,10 +13,21 @@ struct CharacterListApiModel: Codable {
         struct CharacterListResult: Codable {
             let id: Int
             let name, description: String
+            let thumbnail: Thumbnail
             let resourceURI: String
             let comics, series: ComicsCollectionApiModel
             let events: ComicsCollectionApiModel
         }
+    }
+}
+
+struct Thumbnail: Codable {
+    let path: String
+    let thumbnailExtension: String
+
+    enum CodingKeys: String, CodingKey {
+        case path
+        case thumbnailExtension = "extension"
     }
 }
 

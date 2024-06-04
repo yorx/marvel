@@ -12,7 +12,7 @@ struct CharacterListView: View {
                 await self.viewModel.loadInitialData()
             }
             .navigationDestination(item: self.$viewModel.selectedCharacter) { character in
-                CharacterDetailView()
+                CharacterDetailBuilder(character: character)
             }
     }
     
@@ -41,7 +41,7 @@ struct CharacterListView: View {
     }
     
     @ViewBuilder var characterList: some View {
-        LazyVStack(spacing: Constants.itemListSpacing) {
+        LazyVGrid(columns: Constants.gridLayout, spacing: Constants.itemListSpacing){
             ForEach(self.viewModel.characters) { character in
                 Button {
                     self.viewModel.openDetail(id: character.id)
@@ -49,16 +49,18 @@ struct CharacterListView: View {
                     CharacterCell(model: character)
                 }
                 .buttonStyle(.plain)
+                .frame(height: Constants.maxCellHeight)
             }
         }
     }
     
-    
     enum Constants {
         static let horizontalMargin: CGFloat = 16
-        static let itemListSpacing: CGFloat = 4
+        static let itemListSpacing: CGFloat = 16
         static let backgroundColor: Color = Color.background1
         static let navigationColor: Color = Color.background3
+        static let maxCellHeight: CGFloat = 250
+        static let gridLayout = Array.init(repeating: GridItem(.flexible()), count: 2)
     }
 }
 

@@ -1,17 +1,30 @@
 import SwiftUI
+import CachedAsyncImage
 
 struct CharacterCell: View {
     var model: CharacterModel
     
     var body: some View {
-        VStack(spacing: Constants.contentSpacing) {
-            Text(model.name)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            Text(model.description)
-                .frame(maxWidth: .infinity, alignment: .leading)
+        VStack(spacing: Constants.imageSpacing){
+            if let imageUrl = model.image {
+                NetworkImage(url: imageUrl)
+                    .frame(height: 150)
+                    .clipped()
+            }
+            VStack(spacing: Constants.contentSpacing) {
+                Text(model.name)
+                    .font(.title2)
+                    .frame(maxWidth: .infinity, alignment: .topLeading)
+                Text(model.description)
+                    .font(.caption)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            }
+            .padding(.horizontal, Constants.horizontalCardSpacing)
         }
-        .padding(horizontal: Constants.horizontalCardSpacing, vertical: Constants.verticalCardSpacing)
+        .padding(.bottom, Constants.bottomCardSpacing)
         .background(cellBackground)
+        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
     }
     
     var cellBackground: some View {
@@ -22,9 +35,10 @@ struct CharacterCell: View {
     
     
     enum Constants {
-        static let contentSpacing: CGFloat = 16
-        static let horizontalCardSpacing: CGFloat = 16
-        static let verticalCardSpacing: CGFloat = 8
+        static let imageSpacing: CGFloat = 16
+        static let contentSpacing: CGFloat = 4
+        static let horizontalCardSpacing: CGFloat = 4
+        static let bottomCardSpacing: CGFloat = 8
         static let cornerRadius: CGFloat = 16
         static let backgroundColor: Color = Color.background2
         static let borderColor: Color = Color.border1
@@ -33,6 +47,15 @@ struct CharacterCell: View {
 }
 
 #Preview {
-    CharacterCell(model: CharacterModel(id: 5, name: "Superman", description: "Es muy fuerte"))
-        .padding(horizontal: 5)
+    CharacterCell(
+        model: CharacterModel(
+            id: 5,
+            image: URL(string: "https://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"),
+            name: "Superman",
+            description: "Es muy fuerte"
+        )
+    )
+    .padding(
+        horizontal: 5
+    )
 }
