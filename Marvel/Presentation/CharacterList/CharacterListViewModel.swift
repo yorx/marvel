@@ -1,15 +1,15 @@
 import Foundation
 
 class CharacterListViewModel: ObservableObject {
-    private var repository: CharactersRepository = CharactersNetworkRepository()
+    private var repository: CharactersRepository
     
     var actualPage: Int = 0
     @Published var characters: [CharacterModel] = []
     
     @Published var selectedCharacter: CharacterModel? = nil
     
-    init() {
-        
+    init(repository: CharactersRepository) {
+        self.repository = repository
     }
  
     @MainActor

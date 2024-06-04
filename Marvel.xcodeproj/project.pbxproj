@@ -30,6 +30,7 @@
 		312EEC3B2C09FB4800F5BEAD /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EEC3A2C09FB4800F5BEAD /* View+Extension.swift */; };
 		312EEC402C09FD0500F5BEAD /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312EEC3F2C09FD0500F5BEAD /* Colors.xcassets */; };
 		312EEC432C0A037100F5BEAD /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312EEC422C0A037100F5BEAD /* CharacterDetailView.swift */; };
+		31ECB7B72C0F3D4A000C50BF /* RepositoryInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ECB7B62C0F3D4A000C50BF /* RepositoryInjector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		312EEC3A2C09FB4800F5BEAD /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		312EEC3F2C09FD0500F5BEAD /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		312EEC422C0A037100F5BEAD /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
+		31ECB7B62C0F3D4A000C50BF /* RepositoryInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryInjector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				312EEC3E2C09FCED00F5BEAD /* Assets */,
 				31011E202C04AC0A003B39FD /* MainView.swift */,
+				31ECB7B62C0F3D4A000C50BF /* RepositoryInjector.swift */,
 				312EEC392C09FB3900F5BEAD /* common */,
 				312EEC202C08C52200F5BEAD /* CharacterList */,
 				312EEC412C0A035200F5BEAD /* CharacterDetail */,
@@ -321,6 +324,7 @@
 				312EEC1C2C08C42400F5BEAD /* CharacterModel.swift in Sources */,
 				312EEC2D2C08CE2B00F5BEAD /* CharacterApiMapper.swift in Sources */,
 				312EEC0E2C08AEDC00F5BEAD /* NetworkServiceProvider.swift in Sources */,
+				31ECB7B72C0F3D4A000C50BF /* RepositoryInjector.swift in Sources */,
 				312EEC2F2C08CE3D00F5BEAD /* CharacterDetailApiMapper.swift in Sources */,
 				312EEC432C0A037100F5BEAD /* CharacterDetailView.swift in Sources */,
 				312EEC2A2C08CBBC00F5BEAD /* NetworkProviderError.swift in Sources */,
