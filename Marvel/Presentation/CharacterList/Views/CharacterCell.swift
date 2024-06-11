@@ -8,17 +8,14 @@ struct CharacterCell: View {
         VStack(spacing: Constants.imageSpacing){
             if let imageUrl = model.image {
                 NetworkImage(url: imageUrl)
-                    .frame(height: 150)
+                    .frame(height: Constants.imageHeight)
                     .clipped()
             }
             VStack(spacing: Constants.contentSpacing) {
                 Text(model.name)
-                    .font(.title2)
+                    .lineLimit(1)
+                    .font(.title3)
                     .frame(maxWidth: .infinity, alignment: .topLeading)
-                Text(model.description)
-                    .font(.caption)
-                    .multilineTextAlignment(.leading)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             }
             .padding(.horizontal, Constants.horizontalCardSpacing)
         }
@@ -43,6 +40,7 @@ struct CharacterCell: View {
         static let backgroundColor: Color = Color.background2
         static let borderColor: Color = Color.border1
         static let borderStyle = StrokeStyle(lineWidth: 2)
+        static let imageHeight: CGFloat = 150
     }
 }
 

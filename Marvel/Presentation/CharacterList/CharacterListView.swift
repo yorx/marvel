@@ -26,31 +26,85 @@ struct CharacterListView: View {
                 }
             }
             .padding(.horizontal, Constants.horizontalMargin)
+            
         }
         .background(Constants.backgroundColor)
         .navigationTitle("Personajes de marvel")
         .toolbarBackground(Constants.navigationColor, for: .navigationBar)
-        
+        .refreshable {
+            self.pullToRefresh()
+        }
     }
     
-    var emptyPlaceholder: some View {
-        VStack {
+    @ViewBuilder var emptyPlaceholder: some View {
+        VStack(spacing: .zero) {
+            if case .error = self.viewModel.viewState {
+                errorView
+            } else {
+                Loader()
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
+    
+    var errorView: some View {
+        VStack(spacing: Constants.errorSpacing) {
             Text("Listado vacio")
+                .font(.title2)
+                .frame(maxWidth: .infinity, alignment: .center)
+            Button(action: self.retryLoad) {
+                Text("Reintentar")
+                    .font(.title2)
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
         }
         .frame(maxWidth: .infinity)
     }
     
     @ViewBuilder var characterList: some View {
-        LazyVGrid(columns: Constants.gridLayout, spacing: Constants.itemListSpacing){
-            ForEach(self.viewModel.characters) { character in
-                Button {
-                    self.viewModel.openDetail(id: character.id)
-                } label: {
-                    CharacterCell(model: character)
+        VStack {
+            LazyVGrid(columns: Constants.gridLayout, spacing: Constants.itemListSpacing){
+                ForEach(self.viewModel.characters) { character in
+                    Button {
+                        self.viewModel.openDetail(id: character.id)
+                    } label: {
+                        CharacterCell(model: character)
+                    }
+                    .buttonStyle(.plain)
+                    .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.plain)
-                .frame(height: Constants.maxCellHeight)
+                GridRow(alignment: .center) {
+                    Spacer()
+                }
+                .task {
+                    loadMoreItems()
+                }
             }
+            if self.viewModel.viewState == .loading {
+                Loader()
+            }
+        }
+
+    }
+    
+    private func retryLoad() {
+        Task {
+            await self.viewModel.loadInitialData()
+        }
+    }
+    
+    private func pullToRefresh() {
+        Task {
+            await self.viewModel.loadInitialData()
+        }
+    }
+    
+    private func loadMoreItems() {
+        guard self.viewModel.viewState != .loading  else {
+            return
+        }
+        Task {
+            await self.viewModel.loadMore()
         }
     }
     
@@ -59,8 +113,8 @@ struct CharacterListView: View {
         static let itemListSpacing: CGFloat = 16
         static let backgroundColor: Color = Color.background1
         static let navigationColor: Color = Color.background3
-        static let maxCellHeight: CGFloat = 250
         static let gridLayout = Array.init(repeating: GridItem(.flexible()), count: 2)
+        static let errorSpacing: CGFloat = 16
     }
 }
 

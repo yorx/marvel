@@ -11,11 +11,10 @@ struct NetworkImage: View {
         ) { image in
             image
                 .resizable()
-                .scaledToFill()
         } placeholder: {
-            ProgressView()
-                .progressViewStyle(CircularProgressViewStyle())
+            Loader()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
