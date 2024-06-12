@@ -4,6 +4,18 @@ class RepositoryInjector: ObservableObject {
     var charactersRepository: CharactersRepository
     var comicsRepository: ComicsRepository
     
+    static var local: RepositoryInjector {
+        return RepositoryInjector(
+            charactersRepository: CharactersLocalRepository(),
+            comicsRepository: ComicsLocalRepository()
+        )
+    }
+    
+    init(charactersRepository: CharactersRepository, comicsRepository: ComicsRepository) {
+        self.charactersRepository = charactersRepository
+        self.comicsRepository = comicsRepository
+    }
+    
     init() {
         let config = EnvironmentConfiguration.shared
         guard let publicKey = config.publicKey, let privateKey = config.privateKey else {

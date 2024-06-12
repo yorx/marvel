@@ -12,9 +12,8 @@ struct CharacterDetailView: View {
             VStack(spacing: Constants.headerSpacing){
                 if let imageUrl = viewModel.character.image {
                     NetworkImage(url: imageUrl)
-                        .frame(height: Constants.headerImageHeight)
                         .frame(maxWidth: .infinity)
-                        .clipped()
+                        .scaledToFit()
                 }
                 VStack {
                     Text(viewModel.character.description)
@@ -36,8 +35,10 @@ struct CharacterDetailView: View {
                 .font(.title2)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, Constants.contentMargin)
-            ComicListBuilder(characterId: self.viewModel.character.id)
-                .frame(height: 250)
+            ComicListBuilder(
+                characterId: self.viewModel.character.id,
+                elementWidth: 140
+            )
         }
     }
     
@@ -55,5 +56,15 @@ struct CharacterDetailView: View {
 }
 
 #Preview {
-    CharacterDetailBuilder(character: CharacterModel(id: 0, image: nil, name: "Superman", description: ""))
+    NavigationView {
+        CharacterDetailBuilder(
+            character: CharacterModel(
+                id: 0,
+                image: URL(string: "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"),
+                name: "Superman",
+                description: "Un buen superheroe"
+            )
+        )
+    }
+    .inject(RepositoryInjector.local)
 }

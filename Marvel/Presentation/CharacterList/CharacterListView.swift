@@ -105,4 +105,5 @@ struct CharacterListView: View {
 
 #Preview {
     CharacterListBuilder()
+        .inject(RepositoryInjector.local)
 }

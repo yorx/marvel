@@ -3,6 +3,12 @@ import SwiftUI
 struct ComicListView: View {
     @StateObject var viewModel: ComicListViewModel
     
+    var elementWidth: CGFloat
+    var elementHeight: CGFloat {
+        elementWidth * Constants.cardAspectRatio.height / Constants.cardAspectRatio.width
+    }
+    
+    
     var body: some View {
         VStack(spacing: .zero) {
             switch self.viewModel.viewState {
@@ -22,15 +28,26 @@ struct ComicListView: View {
         }
     }
     
+    @ViewBuilder
     var contentView: some View {
-        ScrollView(.horizontal) {
-            LazyHStack(alignment: .center, spacing: Constants.comicSpacing) {
-                ForEach(self.viewModel.comics) { comic in
-                    ComicCell(comic: comic)
+        if !self.viewModel.comics.isEmpty {
+            ScrollView(.horizontal) {
+                LazyHStack(alignment: .center, spacing: Constants.comicSpacing) {
+                    ForEach(self.viewModel.comics) { comic in
+                        ComicCell(comic: comic)
+                            .frame(width: self.elementWidth, height: self.elementHeight)
+                    }
                 }
+                .padding(Constants.listMargin)
             }
-            .padding(Constants.listMargin)
+        } else {
+            emptyList
         }
+    }
+    
+    var emptyList: some View {
+        Text("No se han encontrado comics")
+            .font(.title2)
     }
     
     private func retryLoad() {
@@ -45,9 +62,11 @@ struct ComicListView: View {
     enum Constants {
         static let comicSpacing: CGFloat = 16
         static let listMargin: CGFloat = 16
+        static let cardAspectRatio: CGSize = CGSize(width: 9, height: 16)
     }
 }
 
 #Preview {
-    ComicListBuilder(characterId: 1011334)
+    ComicListBuilder(characterId: 1011334, elementWidth: 140)
+        .inject(RepositoryInjector.local)
 }
