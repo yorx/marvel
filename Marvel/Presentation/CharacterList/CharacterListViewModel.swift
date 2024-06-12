@@ -19,7 +19,7 @@ class CharacterListViewModel: ObservableObject {
             self.viewState = .loading
             let loadedCharacters = try await repository.getCharacters(page: actualPage)
             self.characters = loadedCharacters
-            actualPage = 0
+            actualPage += 1
             self.viewState = .okey
         } catch {
             self.viewState = .error(error: .serviceError)

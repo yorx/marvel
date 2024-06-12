@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CharacterListBuilder: View {
-    @Environment(\.repositoryInjector) var repositoryInjector
+    @Environment(\.repositoryInjector) private var repositoryInjector
     
     var body: some View {
         CharacterListView(viewModel: CharacterListViewModel(repository: repositoryInjector!.charactersRepository))

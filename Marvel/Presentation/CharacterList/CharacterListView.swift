@@ -39,23 +39,9 @@ struct CharacterListView: View {
     @ViewBuilder var emptyPlaceholder: some View {
         VStack(spacing: .zero) {
             if case .error = self.viewModel.viewState {
-                errorView
+                GenericErrorView(retry: self.retryLoad)
             } else {
                 Loader()
-            }
-        }
-        .frame(maxWidth: .infinity)
-    }
-    
-    var errorView: some View {
-        VStack(spacing: Constants.errorSpacing) {
-            Text("Listado vacio")
-                .font(.title2)
-                .frame(maxWidth: .infinity, alignment: .center)
-            Button(action: self.retryLoad) {
-                Text("Reintentar")
-                    .font(.title2)
-                    .frame(maxWidth: .infinity, alignment: .center)
             }
         }
         .frame(maxWidth: .infinity)
@@ -114,7 +100,6 @@ struct CharacterListView: View {
         static let backgroundColor: Color = Color.background1
         static let navigationColor: Color = Color.background3
         static let gridLayout = Array.init(repeating: GridItem(.flexible()), count: 2)
-        static let errorSpacing: CGFloat = 16
     }
 }
 

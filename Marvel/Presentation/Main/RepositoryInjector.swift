@@ -2,6 +2,7 @@ import SwiftUI
 
 class RepositoryInjector: ObservableObject {
     var charactersRepository: CharactersRepository
+    var comicsRepository: ComicsRepository
     
     init() {
         let config = EnvironmentConfiguration.shared
@@ -11,6 +12,7 @@ class RepositoryInjector: ObservableObject {
         let provider = NetworkServiceProvider()
         let requestBuilder = NetworkRequestBuilder(publicKey: publicKey, privateKey: privateKey)
         self.charactersRepository = CharactersNetworkRepository(provider: provider, requestBuilder: requestBuilder)
+        self.comicsRepository = ComicsNetworkRepository(provider: provider, requestBuilder: requestBuilder)
     }
 }
 
