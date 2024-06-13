@@ -1,9 +1,9 @@
 import Foundation
 
-struct ThumbnailMapper {
+struct ThumbnailMapper: DomainMapper {
     private static var extensionSeparator: String = "."
     
-    public static func toDomain(_ image: Thumbnail) -> URL? {
-        return URL(string: image.path + Self.extensionSeparator + image.thumbnailExtension)
+    static func toDomain(_ model: Thumbnail) -> URL? {
+        URL(string: model.path + Self.extensionSeparator + model.thumbnailExtension)
     }
 }

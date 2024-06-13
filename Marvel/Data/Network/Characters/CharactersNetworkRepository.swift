@@ -1,6 +1,6 @@
 import Foundation
 
-class CharactersNetworkRepository: CharactersRepository {
+final class CharactersNetworkRepository: CharactersRepository {
     private static let charactersEndpoint = "/v1/public/characters"
     
     private let itemsPerPage: Int = 20

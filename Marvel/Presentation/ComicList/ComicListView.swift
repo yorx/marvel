@@ -46,7 +46,7 @@ struct ComicListView: View {
     }
     
     var emptyList: some View {
-        Text("No se han encontrado comics")
+        Text("comic_list_empty_alert")
             .font(.title2)
     }
     

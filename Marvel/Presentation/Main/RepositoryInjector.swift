@@ -1,6 +1,6 @@
 import SwiftUI
 
-class RepositoryInjector: ObservableObject {
+final class RepositoryInjector: ObservableObject {
     var charactersRepository: CharactersRepository
     var comicsRepository: ComicsRepository
     

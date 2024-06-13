@@ -1,6 +1,6 @@
 import Foundation
 
-class ComicsLocalRepository: ComicsRepository {
+final class ComicsLocalRepository: ComicsRepository {
     func getCharacterComics(characterId: Int) async throws -> [ComicModel] {
         return Self.mockList
     }

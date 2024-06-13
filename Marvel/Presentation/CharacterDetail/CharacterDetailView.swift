@@ -31,13 +31,13 @@ struct CharacterDetailView: View {
     
     var comicSection: some View {
         VStack(spacing: Constants.sectionTitleSpacing) {
-            Text("Comics")
+            Text("comic_list_title")
                 .font(.title2)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, Constants.contentMargin)
             ComicListBuilder(
                 characterId: self.viewModel.character.id,
-                elementWidth: 140
+                elementWidth: Constants.comicsWidth
             )
         }
     }
@@ -52,6 +52,7 @@ struct CharacterDetailView: View {
         static let contentMargin: CGFloat = 16
         
         static let sectionTitleSpacing: CGFloat = 4
+        static let comicsWidth: CGFloat = 140
     }
 }
 

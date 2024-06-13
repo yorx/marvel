@@ -1,6 +1,6 @@
 import Foundation
 
-class CharacterListViewModel: ObservableObject {
+final class CharacterListViewModel: ObservableObject {
     private var repository: CharactersRepository
     
     var actualPage: Int = 0

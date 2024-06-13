@@ -1,6 +1,6 @@
 import Foundation
 
-class ComicsNetworkRepository: ComicsRepository {
+final class ComicsNetworkRepository: ComicsRepository {
     private static let comicEndpoint = "/v1/public/characters/{characterId}/comics"
     
     var provider: NetworkServiceProvider

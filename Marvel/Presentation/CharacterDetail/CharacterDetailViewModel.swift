@@ -1,6 +1,6 @@
 import Foundation
 
-class CharacterDetailViewModel: ObservableObject {
+final class CharacterDetailViewModel: ObservableObject {
     var character: CharacterModel
     
     init(character: CharacterModel) {

@@ -1,8 +1,8 @@
 import Foundation
 
-struct ComicApiMapper {
-    static func toDomain(_ comicList: ComicApiModel) -> [ComicModel] {
-        return comicList.data.results.compactMap { comic in
+struct ComicApiMapper: DomainMapper {
+    static func toDomain(_ model: ComicApiModel) -> [ComicModel] {
+        return model.data.results.compactMap { comic in
             ComicModel(
                 id: comic.id,
                 image: ThumbnailMapper.toDomain(comic.thumbnail),

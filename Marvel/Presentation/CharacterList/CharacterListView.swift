@@ -29,7 +29,7 @@ struct CharacterListView: View {
             
         }
         .background(Constants.backgroundColor)
-        .navigationTitle("Personajes de marvel")
+        .navigationTitle("character_list_title")
         .toolbarBackground(Constants.navigationColor, for: .navigationBar)
         .refreshable {
             self.pullToRefresh()

@@ -1,12 +1,12 @@
 import Foundation
 
-struct CharacterLocalMapper {
-    public static func toDomain(_ character: CharacterLocalModel) -> CharacterModel {
+struct CharacterLocalMapper: DomainMapper {
+    public static func toDomain(_ model: CharacterLocalModel) -> CharacterModel {
         CharacterModel(
-            id: character.id,
-            image: URL(string: character.image),
-            name: character.name,
-            description: character.description
+            id: model.id,
+            image: URL(string: model.image),
+            name: model.name,
+            description: model.description
         )
     }
 }

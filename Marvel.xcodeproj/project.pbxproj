@@ -53,6 +53,9 @@
 		31CE4D4F2C19FD66002C1896 /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CE4D4E2C19FD66002C1896 /* FileReader.swift */; };
 		31CE4D522C19FE59002C1896 /* FileReaderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CE4D512C19FE59002C1896 /* FileReaderError.swift */; };
 		31CE4D572C19FFB2002C1896 /* CharacterLocalMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CE4D562C19FFB2002C1896 /* CharacterLocalMapper.swift */; };
+		31CE4D5B2C1B43E9002C1896 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CE4D5A2C1B43E9002C1896 /* Mapper.swift */; };
+		31CE4D5D2C1B47AA002C1896 /* DomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CE4D5C2C1B47AA002C1896 /* DomainModel.swift */; };
+		31CE4D5F2C1B4920002C1896 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 31CE4D5E2C1B4920002C1896 /* Localizable.xcstrings */; };
 		31ECB7B72C0F3D4A000C50BF /* RepositoryInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ECB7B62C0F3D4A000C50BF /* RepositoryInjector.swift */; };
 		31ECB7BF2C0F62FE000C50BF /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 31ECB7BE2C0F62FE000C50BF /* CachedAsyncImage */; };
 		31ECB7C22C0F6A16000C50BF /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ECB7C12C0F6A16000C50BF /* RoundedCorner.swift */; };
@@ -109,6 +112,9 @@
 		31CE4D4E2C19FD66002C1896 /* FileReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
 		31CE4D512C19FE59002C1896 /* FileReaderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReaderError.swift; sourceTree = "<group>"; };
 		31CE4D562C19FFB2002C1896 /* CharacterLocalMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocalMapper.swift; sourceTree = "<group>"; };
+		31CE4D5A2C1B43E9002C1896 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
+		31CE4D5C2C1B47AA002C1896 /* DomainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainModel.swift; sourceTree = "<group>"; };
+		31CE4D5E2C1B4920002C1896 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		31ECB7B62C0F3D4A000C50BF /* RepositoryInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryInjector.swift; sourceTree = "<group>"; };
 		31ECB7BC2C0F6064000C50BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		31ECB7C12C0F6A16000C50BF /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
@@ -153,7 +159,7 @@
 				3132D00B2C1873D300676F73 /* EnvironmentConfiguration.swift */,
 				31011E1E2C04AC0A003B39FD /* MarvelApp.swift */,
 				31CE4D192C189D2A002C1896 /* Launch Screen.storyboard */,
-				31CE4D342C199A06002C1896 /* common */,
+				31CE4D342C199A06002C1896 /* Common */,
 				312EEC082C08ABE800F5BEAD /* Presentation */,
 				312EEC072C08ABE300F5BEAD /* Data */,
 				31011E242C04AC0C003B39FD /* Preview Content */,
@@ -172,6 +178,7 @@
 		312EEC072C08ABE300F5BEAD /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				31CE4D592C1B43D3002C1896 /* Common */,
 				312EEC352C09CD3A00F5BEAD /* Domain */,
 				312EEC092C08AC6900F5BEAD /* Network */,
 				31CE4D442C19F980002C1896 /* Local */,
@@ -185,7 +192,7 @@
 				31CE4D1B2C18A02F002C1896 /* Assets */,
 				3132D0042C185AC500676F73 /* App */,
 				31CE4D1C2C18A049002C1896 /* Main */,
-				312EEC392C09FB3900F5BEAD /* common */,
+				312EEC392C09FB3900F5BEAD /* Common */,
 				312EEC202C08C52200F5BEAD /* CharacterList */,
 				312EEC412C0A035200F5BEAD /* CharacterDetail */,
 				31CE4D222C198FEF002C1896 /* ComicList */,
@@ -278,16 +285,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		312EEC392C09FB3900F5BEAD /* common */ = {
+		312EEC392C09FB3900F5BEAD /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				31ECB7C72C0F6BC2000C50BF /* Components */,
 				31ECB7C02C0F6A06000C50BF /* Shapes */,
 				31CE4D202C18AF32002C1896 /* ViewState.swift */,
 				312EEC3A2C09FB4800F5BEAD /* View+Extension.swift */,
-				31CE4D402C19A1D2002C1896 /* GenericErrorView.swift */,
 			);
-			path = common;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		312EEC412C0A035200F5BEAD /* CharacterDetail */ = {
@@ -314,6 +320,7 @@
 			children = (
 				31011E222C04AC0C003B39FD /* Assets.xcassets */,
 				312EEC3F2C09FD0500F5BEAD /* Colors.xcassets */,
+				31CE4D5E2C1B4920002C1896 /* Localizable.xcstrings */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -365,12 +372,12 @@
 			path = Comics;
 			sourceTree = "<group>";
 		};
-		31CE4D342C199A06002C1896 /* common */ = {
+		31CE4D342C199A06002C1896 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				31CE4D352C199A13002C1896 /* String+Extension.swift */,
 			);
-			path = common;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		31CE4D372C199AE6002C1896 /* Models */ = {
@@ -392,10 +399,9 @@
 		31CE4D442C19F980002C1896 /* Local */ = {
 			isa = PBXGroup;
 			children = (
-				31CE4D502C19FD6F002C1896 /* common */,
+				31CE4D502C19FD6F002C1896 /* Common */,
 				31CE4D532C19FF6E002C1896 /* Characters */,
 				31CE4D582C1A0291002C1896 /* Comics */,
-				31CE4D4A2C19FA3F002C1896 /* ComicsLocalRepository.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -408,13 +414,13 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
-		31CE4D502C19FD6F002C1896 /* common */ = {
+		31CE4D502C19FD6F002C1896 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				31CE4D4E2C19FD66002C1896 /* FileReader.swift */,
 				31CE4D512C19FE59002C1896 /* FileReaderError.swift */,
 			);
-			path = common;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		31CE4D532C19FF6E002C1896 /* Characters */ = {
@@ -447,8 +453,18 @@
 		31CE4D582C1A0291002C1896 /* Comics */ = {
 			isa = PBXGroup;
 			children = (
+				31CE4D4A2C19FA3F002C1896 /* ComicsLocalRepository.swift */,
 			);
 			path = Comics;
+			sourceTree = "<group>";
+		};
+		31CE4D592C1B43D3002C1896 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				31CE4D5A2C1B43E9002C1896 /* Mapper.swift */,
+				31CE4D5C2C1B47AA002C1896 /* DomainModel.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		31ECB7C02C0F6A06000C50BF /* Shapes */ = {
@@ -464,6 +480,7 @@
 			children = (
 				31ECB7C82C0F6BF8000C50BF /* NetworkImage.swift */,
 				31CE4D1E2C18AE8D002C1896 /* Loader.swift */,
+				31CE4D402C19A1D2002C1896 /* GenericErrorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -513,6 +530,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 31011E122C04AC0A003B39FD;
 			packageReferences = (
@@ -537,6 +555,7 @@
 				31011E232C04AC0C003B39FD /* Assets.xcassets in Resources */,
 				31CE4D492C19FA15002C1896 /* characters.json in Resources */,
 				31CE4D1A2C189D2A002C1896 /* Launch Screen.storyboard in Resources */,
+				31CE4D5F2C1B4920002C1896 /* Localizable.xcstrings in Resources */,
 				3132D0102C187DA100676F73 /* ApiConfig.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -578,6 +597,7 @@
 				31CE4D412C19A1D2002C1896 /* GenericErrorView.swift in Sources */,
 				3132D00C2C1873D300676F73 /* EnvironmentConfiguration.swift in Sources */,
 				31ECB7C62C0F6B38000C50BF /* CharacterDetailBuilder.swift in Sources */,
+				31CE4D5D2C1B47AA002C1896 /* DomainModel.swift in Sources */,
 				312EEC0E2C08AEDC00F5BEAD /* NetworkServiceProvider.swift in Sources */,
 				31CE4D332C1998EC002C1896 /* ComicsNetworkRepository.swift in Sources */,
 				31CE4D4B2C19FA3F002C1896 /* ComicsLocalRepository.swift in Sources */,
@@ -588,6 +608,7 @@
 				31011E1F2C04AC0A003B39FD /* MarvelApp.swift in Sources */,
 				312EEC332C08D94300F5BEAD /* NetworkUtils.swift in Sources */,
 				31CE4D4F2C19FD66002C1896 /* FileReader.swift in Sources */,
+				31CE4D5B2C1B43E9002C1896 /* Mapper.swift in Sources */,
 				31CE4D302C19988C002C1896 /* ComicsRepository.swift in Sources */,
 				31ECB7C22C0F6A16000C50BF /* RoundedCorner.swift in Sources */,
 				312EEC242C08C54F00F5BEAD /* CharacterListViewModel.swift in Sources */,

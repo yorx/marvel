@@ -1,6 +1,6 @@
 import Foundation
 
-class ComicListViewModel: ObservableObject {
+final class ComicListViewModel: ObservableObject {
     @Published var viewState: ViewState = .empty
     @Published var comics: [ComicModel] = []
     

@@ -5,11 +5,11 @@ struct GenericErrorView: View {
     
     var body: some View {
         VStack(spacing: Constants.errorSpacing) {
-            Text("Listado vacio")
+            Text("empty_list_alert")
                 .font(.title2)
                 .frame(maxWidth: .infinity, alignment: .center)
             Button(action: self.retryLoad) {
-                Text("Reintentar")
+                Text("retry_button_description")
                     .font(.title2)
                     .frame(maxWidth: .infinity, alignment: .center)
             }
